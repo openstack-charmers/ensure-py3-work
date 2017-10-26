@@ -1,0 +1,1274 @@
+('open\\(.*\\)', 'sorted\\(.*cmp\\=.*\\)', '\\.sort\\(.*cmp\\=.*\\)', '\\.sort\\(\\)', 'UserDict', 'print\\ ', '"\\ \\%\\ .*', 'set\\(\\[', '.*\\ /(?:\\ .*|$)', '\\ range\\(.+\\)', '\\.next\\(\\)', 'class\\ .*\\(\\)', '\\.iter[keys|items|values]\\(\\)', '\\.[keys|items|values]\\(\\)')
+Checking ...
+Total packages needing changes: 74
+Total lines to change: 892
+
+Report on lines to change and the match:
+
+Package/directory: charm-6wind-virtual-accelerator
+
+Package/directory: charm-aodh
+    File: ./charms/charm-aodh/src/tests/basic_deployment.py
+          130: print("Running command: %s\n" % " ".join(command))
+          229: aodh_endpoint = "http://%s:8042" % (aodh_ip)
+
+Package/directory: charm-barbican
+    File: ./charms/charm-barbican/src/tests/basic_deployment.py
+          229: barbican_admin_endpoint = "http://%s:9312" % (barbican_ip)
+          230: barbican_endpoint = "http://%s:9311" % (barbican_ip)
+    File: ./charms/charm-barbican/src/actions/actions.py
+           76: return "Action %s undefined" % action_name
+
+Package/directory: charm-barbican-softhsm
+    File: ./charms/charm-barbican-softhsm/src/tests/basic_deployment.py
+          158: print("Running command: %s\n" % " ".join(command))
+    File: ./charms/charm-barbican-softhsm/src/lib/charm/openstack/softhsm.py
+          186: with open(STORED_PINS_FILE, 'r') as f:
+    File: ./charms/charm-barbican-softhsm/unit_tests/test_lib_barbican_softhsm.py
+           59: mock.mock_open(read_data=d),
+
+Package/directory: charm-ceilometer
+    File: ./charms/charm-ceilometer/tests/basic_deployment.py
+          250: ceil_endpoint = "http://%s:8777" % (ceil_ip)
+    File: ./charms/charm-ceilometer/actions/ceilometer_utils.py
+           56: CEILOMETER_CONF = "%s/ceilometer.conf" % CEILOMETER_CONF_DIR
+          340: with open(SHARED_SECRET, 'r') as secret_file:
+          351: with open(SHARED_SECRET, 'w') as secret_file:
+    File: ./charms/charm-ceilometer/actions/ceilometer_hooks.py
+          306: "vip group - skipping" % (vip_key, vip), WARNING)
+          404: with open(context['rabbit_ssl_ca']) as fh:
+    File: ./charms/charm-ceilometer/actions/actions.py
+           53: return "Action %s undefined" % action_name
+    File: ./charms/charm-ceilometer/lib/ceilometer_utils.py
+           56: CEILOMETER_CONF = "%s/ceilometer.conf" % CEILOMETER_CONF_DIR
+          340: with open(SHARED_SECRET, 'r') as secret_file:
+          351: with open(SHARED_SECRET, 'w') as secret_file:
+    File: ./charms/charm-ceilometer/hooks/ceilometer_utils.py
+           56: CEILOMETER_CONF = "%s/ceilometer.conf" % CEILOMETER_CONF_DIR
+          340: with open(SHARED_SECRET, 'r') as secret_file:
+          351: with open(SHARED_SECRET, 'w') as secret_file:
+    File: ./charms/charm-ceilometer/hooks/ceilometer_hooks.py
+          306: "vip group - skipping" % (vip_key, vip), WARNING)
+          404: with open(context['rabbit_ssl_ca']) as fh:
+    File: ./charms/charm-ceilometer/unit_tests/test_ceilometer_utils.py
+          154: class TestContext():
+    File: ./charms/charm-ceilometer/unit_tests/test_ceilometer_contexts.py
+          170: with mock_open(utils.SHARED_SECRET, u'mysecret'):
+    File: ./charms/charm-ceilometer/unit_tests/test_utils.py
+           26: def mock_open(filename, contents=None):
+           32: return open(*args)
+           56: return yaml.safe_load(open(config).read())['options']
+
+Package/directory: charm-ceilometer-agent
+    File: ./charms/charm-ceilometer-agent/tests/basic_deployment.py
+          248: ceil_endpoint = "http://%s:8777" % (ceil_ip)
+    File: ./charms/charm-ceilometer-agent/actions/actions.py
+           53: return "Action %s undefined" % action_name
+    File: ./charms/charm-ceilometer-agent/hooks/ceilometer_utils.py
+           42: CEILOMETER_CONF = "%s/ceilometer.conf" % CEILOMETER_CONF_DIR
+    File: ./charms/charm-ceilometer-agent/hooks/ceilometer_contexts.py
+           80: with open(ca_path, 'w') as fh:
+    File: ./charms/charm-ceilometer-agent/unit_tests/test_utils.py
+           26: def mock_open(filename, contents=None):
+           32: return open(*args)
+           56: return yaml.safe_load(open(config).read())['options']
+
+Package/directory: charm-ceph
+    File: ./charms/charm-ceph/lib/ceph/crush_utils.py
+           63: ids.sort()
+    File: ./charms/charm-ceph/lib/ceph/utils.py
+          192: with open(save_location, "w") as fd:
+          253: with open(speed_path, 'r') as sysfs:
+          307: with open(max_sectors_kb_path, 'w') as f:
+          326: with open(max_sectors_kb_path, 'r') as f:
+          348: with open(max_hw_sectors_kb_path, 'r') as f:
+          631: raise ValueError("dirname not in correct format: %s" % dirname)
+          721: log("FATAL ERROR: %s" % msg,
+         1314: with open(done, 'w'):
+         1316: with open(init_marker, 'w'):
+         1348: with open(init_marker, 'w'):
+         2031: with open(ready_file, 'w') as f:
+         2142: """Pretty print supported upgrade paths for ceph"""
+    File: ./charms/charm-ceph/lib/ceph/broker.py
+          137: msg = ("Missing or invalid api version (%s)" % version)
+          394: log("Creating pool '%s' (erasure_profile=%s)" % (pool.name,
+          449: log("Creating pool '%s' (replicas=%s)" % (pool.name, replicas),
+          453: log("Pool '%s' already exists - skipping create" % pool.name,
+          522: msg = "Invalid key '%s'" % params['key']
+          604: with open(infile.name, 'w') as infile_handle:
+          763: with open(infile.name, 'w') as infile_handle:
+          793: log("Processing %s ceph broker requests" % (len(reqs)), level=INFO)
+          796: log("Processing op='%s'" % op, level=DEBUG)
+          851: msg = "Unknown operation '%s'" % op
+    File: ./charms/charm-ceph/files/nagios/check_ceph_status.py
+           16: with open(args.status_file, "r") as f:
+           36: print "All OK"
+    File: ./charms/charm-ceph/hooks/ceph_hooks.py
+          283: with open(JOURNAL_ZAPPED, 'w') as zapped:
+          339: hosts.sort()
+    File: ./charms/charm-ceph/hooks/utils.py
+           51: with open(apt_sources, "r") as sources:
+           53: with open(apt_sources, "w") as sources:
+          140: "error to retry" % (networks))
+    File: ./charms/charm-ceph/unit_tests/test_utils.py
+           43: return yaml.safe_load(open(config).read())['options']
+          121: def patch_open():
+          122: '''Patch open() to allow mocking both open() itself and the file that is
+          130: def stub_open(*args, **kwargs):
+          131: mock_open(*args, **kwargs)
+
+Package/directory: charm-ceph-fs
+    File: ./charms/charm-ceph-fs/src/reactive/ceph_fs.py
+          118: with open(charm_ceph_conf, 'w') as ceph_conf:
+          124: with open(cephx_key, 'w') as key_file:
+          195: "error to retry" % networks)
+          206: statuses = set([])
+          207: messages = set([])
+    File: ./charms/charm-ceph-fs/unit_tests/test_utils.py
+           42: return yaml.safe_load(open(config).read())['options']
+
+Package/directory: charm-ceph-mon
+    File: ./charms/charm-ceph-mon/lib/ceph/crush_utils.py
+           63: ids.sort()
+    File: ./charms/charm-ceph-mon/lib/ceph/utils.py
+          192: with open(save_location, "w") as fd:
+          253: with open(speed_path, 'r') as sysfs:
+          307: with open(max_sectors_kb_path, 'w') as f:
+          326: with open(max_sectors_kb_path, 'r') as f:
+          348: with open(max_hw_sectors_kb_path, 'r') as f:
+          631: raise ValueError("dirname not in correct format: %s" % dirname)
+          721: log("FATAL ERROR: %s" % msg,
+         1314: with open(done, 'w'):
+         1316: with open(init_marker, 'w'):
+         1348: with open(init_marker, 'w'):
+         2031: with open(ready_file, 'w') as f:
+         2142: """Pretty print supported upgrade paths for ceph"""
+    File: ./charms/charm-ceph-mon/lib/ceph/broker.py
+          137: msg = ("Missing or invalid api version (%s)" % version)
+          394: log("Creating pool '%s' (erasure_profile=%s)" % (pool.name,
+          449: log("Creating pool '%s' (replicas=%s)" % (pool.name, replicas),
+          453: log("Pool '%s' already exists - skipping create" % pool.name,
+          522: msg = "Invalid key '%s'" % params['key']
+          604: with open(infile.name, 'w') as infile_handle:
+          763: with open(infile.name, 'w') as infile_handle:
+          793: log("Processing %s ceph broker requests" % (len(reqs)), level=INFO)
+          796: log("Processing op='%s'" % op, level=DEBUG)
+          851: msg = "Unknown operation '%s'" % op
+    File: ./charms/charm-ceph-mon/files/nagios/check_ceph_status.py
+           16: with open(args.status_file, "r") as f:
+           36: print "All OK"
+    File: ./charms/charm-ceph-mon/hooks/ceph_hooks.py
+          257: hosts.sort()
+          322: "bootstrap fsid '%s' != current fsid '%s'" % (
+          325: "bootstrap secret '%s' != current secret '%s'" % (
+    File: ./charms/charm-ceph-mon/hooks/utils.py
+           51: with open(apt_sources, "r") as sources:
+           53: with open(apt_sources, "w") as sources:
+          140: "error to retry" % (networks))
+    File: ./charms/charm-ceph-mon/unit_tests/test_utils.py
+           43: return yaml.safe_load(open(config).read())['options']
+          151: def patch_open():
+          152: '''Patch open() to allow mocking both open() itself and the file that is
+          160: def stub_open(*args, **kwargs):
+          161: mock_open(*args, **kwargs)
+
+Package/directory: charm-ceph-osd
+    File: ./charms/charm-ceph-osd/actions/replace_osd.py
+           36: with open('/proc/diskstats', 'r') as diskstats:
+    File: ./charms/charm-ceph-osd/lib/ceph/crush_utils.py
+           63: ids.sort()
+    File: ./charms/charm-ceph-osd/lib/ceph/utils.py
+          191: with open(save_location, "w") as fd:
+          252: with open(speed_path, 'r') as sysfs:
+          306: with open(max_sectors_kb_path, 'w') as f:
+          325: with open(max_sectors_kb_path, 'r') as f:
+          347: with open(max_hw_sectors_kb_path, 'r') as f:
+          630: raise ValueError("dirname not in correct format: %s" % dirname)
+          720: log("FATAL ERROR: %s" % msg,
+         1299: with open(done, 'w'):
+         1301: with open(init_marker, 'w'):
+         1334: with open(init_marker, 'w'):
+         2017: with open(ready_file, 'w') as f:
+         2128: """Pretty print supported upgrade paths for ceph"""
+    File: ./charms/charm-ceph-osd/lib/ceph/broker.py
+          137: msg = ("Missing or invalid api version (%s)" % version)
+          394: log("Creating pool '%s' (erasure_profile=%s)" % (pool.name,
+          449: log("Creating pool '%s' (replicas=%s)" % (pool.name, replicas),
+          453: log("Pool '%s' already exists - skipping create" % pool.name,
+          522: msg = "Invalid key '%s'" % params['key']
+          604: with open(infile.name, 'w') as infile_handle:
+          763: with open(infile.name, 'w') as infile_handle:
+          793: log("Processing %s ceph broker requests" % (len(reqs)), level=INFO)
+          796: log("Processing op='%s'" % op, level=DEBUG)
+          851: msg = "Unknown operation '%s'" % op
+    File: ./charms/charm-ceph-osd/files/nagios/check_ceph_status.py
+           16: with open(args.status_file, "r") as f:
+           36: print "All OK"
+    File: ./charms/charm-ceph-osd/hooks/ceph_hooks.py
+          292: with open(charm_ceph_conf, 'w') as cephconf:
+          304: with open(JOURNAL_ZAPPED) as zapfile:
+          315: with os.fdopen(tmpfh, 'wb') as zapfile:
+          399: hosts.sort()
+    File: ./charms/charm-ceph-osd/hooks/utils.py
+           68: with open(apt_sources, "r") as sources:
+           70: with open(apt_sources, "w") as sources:
+          157: "error to retry" % (networks))
+    File: ./charms/charm-ceph-osd/unit_tests/test_utils.py
+           50: return yaml.safe_load(open(config).read())['options']
+          128: def patch_open():
+          129: '''Patch open() to allow mocking both open() itself and the file that is
+          137: def stub_open(*args, **kwargs):
+          138: mock_open(*args, **kwargs)
+
+Package/directory: charm-ceph-proxy
+    File: ./charms/charm-ceph-proxy/files/nagios/check_ceph_status.py
+           16: with open(args.status_file, "r") as f:
+           36: print "All OK"
+    File: ./charms/charm-ceph-proxy/hooks/ceph.py
+          111: log("FATAL ERROR: %s" % msg,
+          442: with open(done, 'w'):
+          444: with open(init_marker, 'w'):
+          468: with open(init_marker, 'w'):
+    File: ./charms/charm-ceph-proxy/hooks/utils.py
+           46: with open(apt_sources, "r") as sources:
+           48: with open(apt_sources, "w") as sources:
+          135: "error to retry" % (networks))
+    File: ./charms/charm-ceph-proxy/hooks/ceph_broker.py
+          111: msg = ("Missing or invalid api version (%s)" % version)
+          165: log("Creating pool '%s' (erasure_profile=%s)" % (pool.name,
+          199: log("Creating pool '%s' (replicas=%s)" % (pool.name, replicas),
+          203: log("Pool '%s' already exists - skipping create" % pool.name,
+          253: msg = "Invalid key '%s'" % params['key']
+          281: log("Processing %s ceph broker requests" % (len(reqs)), level=INFO)
+          284: log("Processing op='%s'" % op, level=DEBUG)
+          324: msg = "Unknown operation '%s'" % op
+    File: ./charms/charm-ceph-proxy/unit_tests/test_ceph_broker.py
+           31: print "Return: %s" % rc
+    File: ./charms/charm-ceph-proxy/unit_tests/test_utils.py
+           29: return yaml.safe_load(open(config).read())['options']
+          107: def patch_open():
+          108: '''Patch open() to allow mocking both open() itself and the file that is
+          116: def stub_open(*args, **kwargs):
+          117: mock_open(*args, **kwargs)
+    File: ./charms/charm-ceph-proxy/unit_tests/test_ceph_hooks.py
+           24: """ % CEPH_KEY
+           42: print("juju-log %s: %s" % (level, message))
+
+Package/directory: charm-ceph-radosgw
+    File: ./charms/charm-ceph-radosgw/tests/basic_deployment.py
+          624: # previous run of this function. If / when we support per
+    File: ./charms/charm-ceph-radosgw/actions/actions.py
+           52: return "Action %s undefined" % action_name
+    File: ./charms/charm-ceph-radosgw/hooks/ceph_radosgw_context.py
+          113: log("Host '%s' appears to be ipv6 resolvable" % (hostname),
+          123: with open(tmp_hosts, 'a+') as fd:
+          126: key = "^%s\s+" % (host_addr)
+          130: fd.write("%s\t%s\n" % (host_addr, hostname))
+          177: port = "[::]:%s" % (port)
+          179: mon_hosts.sort()
+    File: ./charms/charm-ceph-radosgw/hooks/utils.py
+          193: with open(apt_sources, "r") as sources:
+          195: with open(apt_sources, "w") as sources:
+          425: with open(ca, 'w') as fd:
+          456: with open(signing_cert_path, 'w') as fd:
+          561: with open(APACHE_PORTS_FILE, 'w') as ports:
+    File: ./charms/charm-ceph-radosgw/hooks/hooks.py
+          296: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-ceph-radosgw/unit_tests/test_ceph_radosgw_context.py
+          214: expect['port'] = "[::]:%s" % (70)
+          254: expect['port'] = "[::]:%s" % (70)
+    File: ./charms/charm-ceph-radosgw/unit_tests/test_utils.py
+           42: return yaml.safe_load(open(config).read())['options']
+    File: ./charms/charm-ceph-radosgw/unit_tests/test_ceph_radosgw_utils.py
+          185: m = mock_open()
+          210: m = mock_open()
+
+Package/directory: charm-cinder
+    File: ./charms/charm-cinder/tests/basic_deployment.py
+          258: cmd = 'sudo lvs | grep cinder-volumes | awk \'{ print $1 }\''
+    File: ./charms/charm-cinder/actions/cinder_manage.py
+           89: log("Removing service:%d, hostname:%s" % (service.id, service.host))
+           97: action_fail("Cannot remove service: %s" % service.host)
+    File: ./charms/charm-cinder/actions/actions.py
+           60: return "Action %s undefined" % action_name
+    File: ./charms/charm-cinder/hooks/cinder_hooks.py
+          527: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-cinder/hooks/cinder_contexts.py
+          249: log("Installing crontab: %s" % self.DEFAULT_CRONTAB_PATH)
+          250: with open(self.DEFAULT_CRONTAB_PATH, "w+") as crontab:
+    File: ./charms/charm-cinder/hooks/cinder_utils.py
+          312: open(ceph_config_file(), 'w').close()
+          721: id = "%s-%s" % (local_unit(), uuid.uuid4())
+          728: env = open('/etc/environment', 'r').read()
+          730: with open('/etc/environment', 'a') as out:
+          732: with open('/etc/init/cinder-volume.override', 'w') as out:
+    File: ./charms/charm-cinder/unit_tests/test_cinder_utils.py
+           95: Sector size (logical/physical): 512 bytes / 512 bytes
+           96: I/O size (minimum/optimal): 512 bytes / 512 bytes
+          686: args = {'cinder-db-initialised': "unit/0-%s" % uuid}
+          727: env = open('/etc/environment', 'r').read()
+          729: with open('/etc/environment', 'a') as out:
+          731: with open('/etc/init/cinder-volume.override', 'w') as out:
+         1000: self.juju_log.assert_called_with("pvscan: %s" % output)
+    File: ./charms/charm-cinder/unit_tests/test_utils.py
+           57: return yaml.safe_load(open(config).read())['options']
+
+Package/directory: charm-cinder-backup
+    File: ./charms/charm-cinder-backup/tests/basic_deployment.py
+          314: for index in range(0, len(rel_data['ops'])):
+          790: name = "restore_backup_%s" % (vol_backup.id)
+    File: ./charms/charm-cinder-backup/hooks/cinder_backup_utils.py
+           79: open(ceph_config_file(), 'w').close()
+          114: env = open('/etc/environment', 'r').read()
+          116: with open('/etc/environment', 'a') as out:
+          118: with open('/etc/init/cinder-backup.override', 'w') as out:
+    File: ./charms/charm-cinder-backup/unit_tests/test_utils.py
+           41: return yaml.safe_load(open(config).read())['options']
+
+Package/directory: charm-cinder-ceph
+    File: ./charms/charm-cinder-ceph/tests/basic_deployment.py
+          320: for index in range(0, len(rel_data['ops'])):
+    File: ./charms/charm-cinder-ceph/hooks/cinder_utils.py
+           85: open(ceph_config_file(), 'w').close()
+          121: env = open('/etc/environment', 'r').read()
+          123: with open('/etc/environment', 'a') as out:
+          125: with open('/etc/init/cinder-volume.override', 'w') as out:
+    File: ./charms/charm-cinder-ceph/unit_tests/test_cinder_utils.py
+           74: env = open('/etc/environment', 'r').read()
+           76: with open('/etc/environment', 'a') as out:
+           78: with open('/etc/init/cinder-volume.override', 'w') as out:
+    File: ./charms/charm-cinder-ceph/unit_tests/test_utils.py
+           42: return yaml.safe_load(open(config).read())['options']
+
+Package/directory: charm-cloudkitty
+
+Package/directory: charm-designate
+    File: ./charms/charm-designate/src/tests/basic_deployment.py
+          176: print("Running command: %s\n" % " ".join(command))
+          265: designate_endpoint = "http://%s:9001" % (designate_ip)
+    File: ./charms/charm-designate/src/reactive/designate_utils.py
+           39: with open("/root/novarc", "r") as ins:
+    File: ./charms/charm-designate/unit_tests/test_designate_utils.py
+           70: mock.mock_open(read_data=text_file_data),
+           73: with open('filename', 'rU'):
+
+Package/directory: charm-designate-bind
+    File: ./charms/charm-designate-bind/src/lib/charm/openstack/designate_bind.py
+          360: open(touch_file, 'w+').close()
+          468: open(apparmor_file, 'w').close()
+
+Package/directory: charm-glance
+    File: ./charms/charm-glance/actions/actions.py
+           55: return "Action %s undefined" % action_name
+    File: ./charms/charm-glance/hooks/glance_utils.py
+          139: GLANCE_REGISTRY_CONF = "%s/glance-registry.conf" % GLANCE_CONF_DIR
+          140: GLANCE_API_CONF = "%s/glance-api.conf" % GLANCE_CONF_DIR
+          253: open(ceph_config_file(), 'w').close()
+    File: ./charms/charm-glance/hooks/glance_relations.py
+          377: # Configure any object-store / swift relations now that we have an
+    File: ./charms/charm-glance/unit_tests/test_utils.py
+           46: return yaml.safe_load(open(config).read())['options']
+          139: def patch_open():
+          140: '''Patch open() to allow mocking both open() itself and the file that is
+          148: def stub_open(*args, **kwargs):
+          149: mock_open(*args, **kwargs)
+
+Package/directory: charm-glusterfs
+    File: ./charms/charm-glusterfs/src/lib/charm/gluster/metrics.py
+           30: gb_used = used_space / 1024 / 1024 / 1024
+    File: ./charms/charm-glusterfs/src/lib/charm/gluster/fstab.py
+           79: with open(self.location, "r") as file:
+          117: with open(self.location, "w") as f:
+    File: ./charms/charm-glusterfs/src/lib/charm/gluster/samba.py
+           59: with open(samba_path) as existing_config:
+           89: with open(os.path.join(os.sep, 'etc', 'samba', 'smb.conf')) as samba_conf:
+    File: ./charms/charm-glusterfs/src/lib/charm/gluster/block.py
+          192: return AsyncInit(format_child=subprocess.Popen(arg_list),
+          243: return AsyncInit(format_child=subprocess.Popen(arg_list),
+          310: format_handle = subprocess.Popen(arg_list)
+          317: # / The default blocksize for volumes is 8 Kbytes. Any
+          318: # / power of 2 from 512 bytes to 128 Kbytes is valid.
+          328: # / Enable compression on the volume. Default is False
+          350: zpool_create = subprocess.Popen(arg_list)
+          575: f = open("/etc/rc.local", "r")
+          584: f = open("/etc/rc.local", "w", encoding="utf-8")
+          620: with open(crontab, 'r') as f:
+          637: out = os.fdopen(fd, 'w')
+    File: ./charms/charm-glusterfs/src/reactive/upgrade.py
+           54: with open("/var/lib/glusterd/glusterd.info", "r") as f:
+           91: peer_list.sort()
+          172: with open(upgrade_key, "r") as f:
+          200: with open(os.path.join(p, key), "w") as file:
+    File: ./charms/charm-glusterfs/src/reactive/actions.py
+          225: return "Action %s undefined" % action_name
+    File: ./charms/charm-glusterfs/unit_tests/test_fstab.py
+           69: with open('unit_tests/fstab', 'r') as f:
+    File: ./charms/charm-glusterfs/unit_tests/test_volume.py
+           79: with open('unit_tests/quota_list.xml', 'r') as xml_output:
+
+Package/directory: charm-gnocchi
+
+Package/directory: charm-hacluster
+    File: ./charms/charm-hacluster/tests/basic_deployment.py
+           58: "skipping tests" % (env_var))
+    File: ./charms/charm-hacluster/actions/actions.py
+           48: return "Action %s undefined" % action_name
+    File: ./charms/charm-hacluster/hooks/pcmk.py
+           41: for i in range(retries):
+           58: status = commands.getstatusoutput("crm resource status %s" % resource)[0]
+           69: cmd = "crm -F node standby %s" % node
+           78: cmd = "crm -F node online %s" % node
+           92: (_, output) = commands.getstatusoutput("crm resource status %s" % opt_name)
+           93: if output.startswith("resource %s is running" % opt_name):
+    File: ./charms/charm-hacluster/hooks/utils.py
+          122: with open("/etc/init/{}.override".format(service), "w") as override:
+          195: msg = "Invalid interface '%s'" % iface
+          199: msg = "No valid network found for interface '%s'" % iface
+          389: "types are: %s" % (transport, ', '.join(SUPPORTED_TRANSPORTS)))
+          409: log("Excluding '%s' from address list" % v,
+          425: log("Expected an ipv6 address but got %s" % (addr),
+          455: hosts.sort()
+          646: for restart in range(retries):
+    File: ./charms/charm-hacluster/hooks/hooks.py
+          125: "types are: %s" % (transport, ', '.join(SUPPORTED_TRANSPORTS)))
+          185: log("Migrating MAAS DNS resource %s" % resource, INFO)
+    File: ./charms/charm-hacluster/ocf/maas/maasclient/driver.py
+           61: log.warning("Attr 'uuid' not found in %s" % obj)
+    File: ./charms/charm-hacluster/unit_tests/test_utils.py
+           44: return yaml.safe_load(open(config).read())['options']
+          138: def patch_open():
+          139: '''Patch open() to allow mocking both open() itself and the file that is
+          147: def stub_open(*args, **kwargs):
+          148: mock_open(*args, **kwargs)
+    File: ./charms/charm-hacluster/unit_tests/test_hacluster_utils.py
+           28: with open(path, 'w') as f:
+           76: with open(utils.COROSYNC_CONF) as fd:
+          114: @mock.patch.object(utils, 'get_corosync_id', lambda u: "%s-cid" % (u))
+          143: @mock.patch.object(utils, 'get_corosync_id', lambda u: "%s-cid" % (u))
+
+Package/directory: charm-heat
+    File: ./charms/charm-heat/hooks/heat_relations.py
+          165: with open(encryption_path, 'r') as f:
+          382: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-heat/unit_tests/test_heat_relations.py
+          145: with patch_open() as (mock_open, mock_file):
+    File: ./charms/charm-heat/unit_tests/test_utils.py
+           43: return yaml.safe_load(open(config).read())['options']
+          120: def patch_open():
+          121: '''Patch open().
+          122: To allow mocking both open() itself and the file that is yielded.
+          130: def stub_open(*args, **kwargs):
+          131: mock_open(*args, **kwargs)
+
+Package/directory: charm-interface-barbican-hsm
+
+Package/directory: charm-interface-bind-rndc
+
+Package/directory: charm-interface-ceph-client
+    File: ./charms/charm-interface-ceph-client/requires.py
+          123: hosts.sort()
+
+Package/directory: charm-interface-ceph-mds
+    File: ./charms/charm-interface-ceph-mds/requires.py
+          118: hosts.sort()
+
+Package/directory: charm-interface-gnocchi
+
+Package/directory: charm-interface-hacluster
+
+Package/directory: charm-interface-keystone
+
+Package/directory: charm-interface-keystone-admin
+
+Package/directory: charm-interface-keystone-credentials
+
+Package/directory: charm-interface-keystone-domain-backend
+
+Package/directory: charm-interface-manila-plugin
+
+Package/directory: charm-interface-mysql-shared
+
+Package/directory: charm-interface-neutron-plugin
+
+Package/directory: charm-interface-neutron-plugin-api-subordinate
+
+Package/directory: charm-interface-odl-controller-api
+
+Package/directory: charm-interface-openstack-ha
+
+Package/directory: charm-interface-ovsdb-manager
+
+Package/directory: charm-interface-rabbitmq
+
+Package/directory: charm-interface-service-control
+
+Package/directory: charm-keystone
+    File: ./charms/charm-keystone/tests/basic_deployment.py
+          217: for i in range(0, self.keystone_num_units):
+          341: for i in range(0, self.keystone_num_units):
+          366: for i in range(0, self.keystone_num_units):
+    File: ./charms/charm-keystone/actions/actions.py
+           55: return "Action %s undefined" % action_name
+    File: ./charms/charm-keystone/hooks/keystone_context.py
+           84: log("Creating apache ssl certs in %s" % (self.ssl_dir), level=INFO)
+    File: ./charms/charm-keystone/hooks/keystone_utils.py
+          820: with open(STORED_TOKEN, 'r') as f:
+          824: with open(STORED_TOKEN, 'w') as out:
+          833: with open(KEYSTONE_CONF, 'r') as f:
+          856: log("Deleted service entry '%s'" % service_name, level=DEBUG)
+          864: log("Service entry for '%s' already exists." % service_name,
+          871: log("Created new service entry '%s'" % service_name, level=DEBUG)
+          912: log("Created new endpoint template for '%s' in '%s'" % (region, service),
+          954: log("Created new tenant '%s' in domain '%s'" % (name, domain),
+          958: log("Tenant '%s' already exists." % name, level=DEBUG)
+          966: log("Domain '%s' already exists." % name, level=DEBUG)
+          970: log("Created new domain: %s" % name, level=DEBUG)
+         1005: log("A user named '%s' already exists in domain '%s'" % (name, domain),
+         1014: "'%s'" % (tenant, domain))
+         1028: log("Created new user '%s' tenant: '%s' domain: '%s'" % (name, tenant_id,
+         1045: log("Created new role '%s'" % name, level=DEBUG)
+         1047: log("A role named '%s' already exists" % name, level=DEBUG)
+         1087: "'%s'" % (tenant, domain))
+         1118: with open(backing_file, 'w+') as fd:
+         1119: fd.writelines("%s\n" % data)
+         1264: ep = "%s://%s:%s/%s" % (proto, ip, port, suffix)
+         1266: ep = "%s://%s:%s" % (proto, ip, port)
+         1283: log("Updating password for user '%s'" % username)
+         1287: error_out("Could not resolve user id for '%s'" % username)
+         1299: stored_passwd = open(path, 'r')
+         1310: with open(STORED_PASSWD) as fd:
+         1383: paths = glob.glob("%s/*" % (path))
+         1426: log("Running %s" % (action), level=DEBUG)
+         1429: log("Running %s" % (action), level=DEBUG)
+         1432: log("Unknown action flag=%s" % (flag), level=WARNING)
+         1451: log("Creating action %s" % (flagfile), level=DEBUG)
+         1458: action = "%s.%s" % (local_unit().replace('/', '-'), action)
+         1460: log("Creating action %s" % (flagfile), level=DEBUG)
+         1519: if len(set_votes) == 1 and set_votes == set([local_unit()]):
+         1547: elif (len(set_votes) == 1 and set_votes != set([local_unit()]) and
+         1618: with tarfile.open(SSL_SYNC_ARCHIVE, 'w') as fd:
+         1621: log("Adding path '%s' sync tarball" % (path), level=DEBUG)
+         1625: "tarball" % (path), level=INFO)
+         1671: log("Updating certs from '%s'" % (path), level=DEBUG)
+         1672: with tarfile.open(path) as fd:
+         1673: files = ["/%s" % m.name for m in fd.getmembers()]
+         1682: os.rename(path, "%s.complete" % (path))
+         1806: "path='%s' - not going any deeper" % (recurse_depth, path),
+         1810: for p in glob.glob("%s/*" % path):
+         1814: with open(p, 'r') as fd:
+         1958: log("Creating service credentials for '%s'" % user, level=DEBUG)
+         1960: log("User '%s' already exists" % (user), level=DEBUG)
+         1975: log("No role grants requested for user '%s'" % (user), level=DEBUG)
+         1981: log("Creating requested role '%s'" % role, level=DEBUG)
+         2027: single = set(['service', 'region', 'public_url', 'admin_url',
+         2057: log("Creating requested role: %s" % role)
+         2075: service_username = "%s%s" % (prefix, service_username)
+         2134: service_username = "%s%s" % (prefix, service_username)
+         2298: log("Invalid service requested: '%s'" % service)
+         2413: log("Sending identity-service notifications (trigger=%s)" % (force),
+         2444: log("%s does not yet have db permissions" % (local_unit()),
+         2668: with open(backing_file, 'r') as fd:
+    File: ./charms/charm-keystone/hooks/keystone_hooks.py
+          599: log("Setting %s=%s" % (key, bin(ssl_config)), level=DEBUG)
+          642: log("Peer echo whitelist: %s" % (echo_whitelist), level=DEBUG)
+          734: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-keystone/hooks/keystone_ssl.py
+          142: with open(os.path.join(ca_dir, 'serial'), 'wb') as out:
+          146: with open(os.path.join(ca_dir, 'index.txt'), 'wb') as out:
+          152: with open(conf, 'wb') as out:
+          197: log("Executing: %s" % ' '.join(cmd), level=DEBUG)
+          220: with open(conf, 'wb') as out:
+          240: with open(bundle_file, 'r') as f:
+          248: with open(bundle_file, 'wb') as out:
+          330: with open(crtpath, 'r') as f:
+          332: with open(keypath, 'r') as f:
+          353: with open(self.ca_cert_path) as f:
+          355: with open(self.root_ca_cert_path) as f:
+    File: ./charms/charm-keystone/unit_tests/test_utils.py
+           45: with open(config) as f:
+          123: def patch_open():
+          124: '''Patch open() to allow mocking both open() itself and the file that is
+          132: def stub_open(*args, **kwargs):
+          133: mock_open(*args, **kwargs)
+    File: ./charms/charm-keystone/unit_tests/test_keystone_hooks.py
+          233: class mock_cls_config():
+
+Package/directory: charm-keystone-ldap
+
+Package/directory: charm-layer-ceph-base
+    File: ./charms/charm-layer-ceph-base/lib/charms/ceph_base.py
+           90: hosts.sort()
+           96: with open(apt_sources, "r") as sources:
+           98: with open(apt_sources, "w") as sources:
+          183: "error to retry" % (networks))
+          389: log("FATAL ERROR: %s" % msg,
+          833: with open(done, 'w'):
+          835: with open(init_marker, 'w'):
+          859: with open(init_marker, 'w'):
+    File: ./charms/charm-layer-ceph-base/reactive/ceph_base.py
+           55: statuses = set([])
+           56: messages = set([])
+
+Package/directory: charm-layer-openstack
+
+Package/directory: charm-layer-openstack-api
+
+Package/directory: charm-layer-openstack-principle
+
+Package/directory: charm-lxd
+    File: ./charms/charm-lxd/tests/lxd_amulet_utils.py
+           96: with open(abs_file_name) as f:
+    File: ./charms/charm-lxd/hooks/lxd_utils.py
+          328: target_tarball = tarfile.open(destination_tar, "w:")
+          335: 'description': "Busybox %s" % os.uname()[4],
+          336: 'name': "busybox-%s" % os.uname()[4],
+          341: with open("/bin/busybox", "rb") as fd:
+          361: symlink_file.name = "rootfs/%s" % path.strip()
+          368: directory_file.name = "rootfs/%s" % path
+          392: raise Exception("Failed to compress: %s" % destination_tar)
+          475: with open(EXT4_USERNS_MOUNTS, 'w') as userns_mounts:
+          485: with open('/etc/modules', 'r+') as modules:
+          570: with open(uidfile, 'r+') as f_id:
+    File: ./charms/charm-lxd/unit_tests/test_lxd_utils.py
+          228: with testing.patch_open() as (_open, _file):
+    File: ./charms/charm-lxd/unit_tests/testing.py
+           46: return yaml.safe_load(open(config).read())['options']
+          124: def patch_open():
+          125: '''Patch open() to allow mocking both open() itself and the file that is
+          133: def stub_open(*args, **kwargs):
+          134: mock_open(*args, **kwargs)
+
+Package/directory: charm-manila
+
+Package/directory: charm-manila-generic
+
+Package/directory: charm-manila-glusterfs
+
+Package/directory: charm-mistral
+    File: ./charms/charm-mistral/src/tests/basic_deployment.py
+          161: print("Running command: %s\n" % " ".join(command))
+          210: for i in range(0, 20):
+    File: ./charms/charm-mistral/src/reactive/mistral_handlers.py
+           38: archive = tarfile.open(resource_tar)
+
+Package/directory: charm-murano
+    File: ./charms/charm-murano/src/tests/basic_deployment.py
+          126: print("Running command: %s\n" % " ".join(command))
+          219: murano_endpoint = "http://%s:8082" % (murano_ip)
+
+Package/directory: charm-neutron-api
+    File: ./charms/charm-neutron-api/actions/actions.py
+           53: return "Action %s undefined" % action_name
+    File: ./charms/charm-neutron-api/hooks/neutron_api_context.py
+          174: msg = "dns-domain '%s' is an invalid domain name." % dns_domain
+    File: ./charms/charm-neutron-api/hooks/neutron_api_utils.py
+          357: with open(os.path.join(charm_dir(),
+          371: with open(os.path.join(charm_dir(),
+          537: with open(CA_CERT_PATH) as _in:
+          564: pkgs.sort()
+    File: ./charms/charm-neutron-api/hooks/neutron_api_hooks.py
+          599: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-neutron-api/unit_tests/test_neutron_api_utils.py
+           98: class DummyIdentityServiceContext():
+          261: class _mock_OSConfigRenderer():
+          289: with patch_open() as (_open, _file):
+          324: pkgs.sort()
+          384: pkgs.sort()
+    File: ./charms/charm-neutron-api/unit_tests/test_utils.py
+           47: return yaml.safe_load(open(config).read())['options']
+          125: def patch_open():
+          126: '''Patch open() to allow mocking both open() itself and the file that is
+          134: def stub_open(*args, **kwargs):
+          135: mock_open(*args, **kwargs)
+    File: ./charms/charm-neutron-api/unit_tests/test_neutron_api_hooks.py
+          119: class DummyContext():
+          140: return [randrange(100) for _count in range(2)]
+
+Package/directory: charm-neutron-api-odl
+
+Package/directory: charm-neutron-api-plumgrid
+    File: ./charms/charm-neutron-api-plumgrid/bin/charm_helpers_sync.py
+           41: return yaml.load(open(conf_file).read())
+           80: open(_i, 'wb').close()
+          249: logging.error("Could not sync: %s" % e)
+    File: ./charms/charm-neutron-api-plumgrid/hooks/neutron_plumgrid_utils.py
+           73: with open(SOURCES_LIST, 'r+') as sources:
+    File: ./charms/charm-neutron-api-plumgrid/unit_tests/test_utils.py
+           29: return yaml.safe_load(open(config).read())['options']
+          107: def patch_open():
+          108: '''Patch open() to allow mocking both open() itself and the file that is
+          116: def stub_open(*args, **kwargs):
+          117: mock_open(*args, **kwargs)
+    File: ./charms/charm-neutron-api-plumgrid/unit_tests/test_neutron_plumgrid_plugin_utils.py
+           21: class DummyContext():
+           40: class _mock_OSConfigRenderer():
+
+Package/directory: charm-neutron-gateway
+    File: ./charms/charm-neutron-gateway/files/neutron-ha-monitor.py
+           33: Usage: subclass the Daemon class and override the run() method
+           66: stdin = open(self.stdin, 'r')
+           67: stdout = open(self.stdout, 'a+')
+           68: stderr = open(self.stderr, 'a+', 0)
+          109: with open(envrc_f, 'r') as f:
+    File: ./charms/charm-neutron-gateway/hooks/neutron_contexts.py
+          178: with open(_path, 'w') as secret_file:
+          181: with open(_path, 'r') as secret_file:
+    File: ./charms/charm-neutron-gateway/hooks/neutron_utils.py
+          937: with open(envrc_f, 'r') as f:
+          952: with open(envrc_f, 'w') as f:
+    File: ./charms/charm-neutron-gateway/hooks/neutron_hooks.py
+          306: f = open(cronpath, 'w')
+    File: ./charms/charm-neutron-gateway/unit_tests/test_utils.py
+           29: return yaml.safe_load(open(config).read())['options']
+    File: ./charms/charm-neutron-gateway/unit_tests/test_neutron_contexts.py
+           24: def patch_open():
+           25: '''Patch open() to allow mocking both open() itself and the file that is
+           33: def stub_open(*args, **kwargs):
+           34: mock_open(*args, **kwargs)
+           41: class DummyNeutronAPIContext():
+          308: with patch_open() as (_open, _file):
+          318: with patch_open() as (_open, _file):
+    File: ./charms/charm-neutron-gateway/unit_tests/test_neutron_utils.py
+          732: class DummyNetworkServiceContext():
+          741: class DummyExternalPortContext():
+
+Package/directory: charm-neutron-openvswitch
+    File: ./charms/charm-neutron-openvswitch/tests/basic_deployment.py
+          308: msg = "Propagation error, expected %s=%s" % (config_file_key,
+          347: msg = "Propagation error, expected %s=%s" % ('enable_security_group',
+    File: ./charms/charm-neutron-openvswitch/hooks/neutron_ovs_hooks.py
+           80: with open(OVS_DEFAULT, 'r') as f:
+    File: ./charms/charm-neutron-openvswitch/hooks/pci.py
+           81: with open(mac_addr_file, 'r') as f:
+           95: with open(state_file, 'r') as f:
+          124: with open(sriov_totalvfs_file, 'r') as f:
+          140: with open(sriov_numvfs_file, 'r') as f:
+          187: with open(sdevice, 'w') as sh:
+    File: ./charms/charm-neutron-openvswitch/hooks/neutron_ovs_context.py
+          281: cores += range(int(cpu_min_max[0]),
+          292: with open(os.path.join(node, 'cpulist')) as cpulist:
+          358: with open(SHARED_SECRET, 'w') as secret_file:
+          361: with open(SHARED_SECRET, 'r') as secret_file:
+    File: ./charms/charm-neutron-openvswitch/unit_tests/test_pci.py
+           59: with patch_open() as (_open, _file):
+          158: with patch_open() as (_open, _file):
+          168: with patch_open() as (_open, _file):
+          197: with patch_open() as (_open, _file):
+    File: ./charms/charm-neutron-openvswitch/unit_tests/test_pci_helper.py
+          102: with patch_open() as (_open, _file), \
+    File: ./charms/charm-neutron-openvswitch/unit_tests/test_neutron_ovs_context.py
+          457: with patch_open() as (_open, _file):
+          467: with patch_open() as (_open, _file):
+          529: with patch_open() as (_, mock_file):
+    File: ./charms/charm-neutron-openvswitch/unit_tests/test_utils.py
+           43: return yaml.safe_load(open(config).read())['options']
+          121: def patch_open():
+          122: '''Patch open() to allow mocking both open() itself and the file that is
+          130: def stub_open(*args, **kwargs):
+          131: mock_open(*args, **kwargs)
+    File: ./charms/charm-neutron-openvswitch/unit_tests/test_neutron_ovs_utils.py
+           88: class DummyContext():
+          241: class _mock_OSConfigRenderer():
+          263: class _mock_OSConfigRenderer():
+    File: ./charms/charm-neutron-openvswitch/unit_tests/pci_responses.py
+           46: 0000:0b:00.0 "RAID bus controller" "LSI Logic / Symbios Logic" "MegaRAID SAS-3 3108 [Invader]" -r02 "Cisco Systems Inc" "Device 00db"
+    File: ./charms/charm-neutron-openvswitch/unit_tests/test_neutron_ovs_hooks.py
+          106: with open('unit_tests/%s' % sample, 'r') as f:
+          109: with patch('__builtin__.open', mock_open(read_data=content),
+
+Package/directory: charm-nova-cloud-controller
+    File: ./charms/charm-nova-cloud-controller/actions/actions.py
+           53: return "Action %s undefined" % action_name
+    File: ./charms/charm-nova-cloud-controller/hooks/nova_cc_utils.py
+          554: with open(fpath, 'r') as f:
+          581: with open('/usr/sbin/policy-rc.d', 'w') as policy:
+          911: with open(CA_CERT_PATH) as _in:
+          929: open(f, 'w').close()
+          993: with open(known_hosts(unit, user), 'a') as out:
+          998: with open(authorized_keys(unit, user)) as keys:
+         1003: with open(authorized_keys(unit, user), 'a') as keys:
+         1043: with open(known_hosts(unit, user)) as hosts:
+         1053: with open(authorized_keys(unit, user)) as keys:
+         1065: with open(authorized_keys(unit, user)) as _keys:
+         1073: with open(authorized_keys(unit, user), 'w') as _keys:
+         1226: with open('/etc/init/{}.override'.format(svc), 'wb') as out:
+    File: ./charms/charm-nova-cloud-controller/hooks/nova_cc_hooks.py
+          306: with open('/etc/init/neutron-server.override', 'wb') as out:
+          596: with open('/etc/quantum/novarc', 'wb') as out:
+          662: proxy_base_addr = "%s://%s" % (schema, config('console-proxy-ip'))
+          670: "%s:%s%s" % (proxy_base_addr,
+          879: "vip group - skipping" % (vip_key, vip), WARNING)
+         1028: 'nova_url': "%s:8774/v2" % canonical_url(CONFIGS, INTERNAL)
+    File: ./charms/charm-nova-cloud-controller/hooks/nova_cc_context.py
+          313: servers.append("%s:%s" % (priv_addr, rel['port']))
+          315: log("Could not get memcache servers: %s" % (ex), level='WARNING')
+          361: with open(cert_path, 'w') as fh:
+          363: with open(key_path, 'w') as fh:
+          378: url = "https://%s:%s%s" % (
+    File: ./charms/charm-nova-cloud-controller/unit_tests/test_nova_cc_utils.py
+          167: """ % GPG_PPA_CLOUD_ARCHIVE
+          174: """ % GPG_PPA_CLOUD_ARCHIVE
+          490: with patch_open() as (_open, _file):
+          537: with patch_open() as (_open, _file):
+          550: with patch_open() as (_open, _file):
+          562: with patch_open() as (_open, _file):
+          610: with patch_open() as (_open, _file):
+          617: with patch_open() as (_open, _file):
+          639: with patch_open() as (_open, _file):
+    File: ./charms/charm-nova-cloud-controller/unit_tests/test_utils.py
+           44: return yaml.safe_load(open(config).read())['options']
+          124: def patch_open():
+          125: '''Patch open() to allow mocking both open() itself and the file that is
+          133: def stub_open(*args, **kwargs):
+          134: mock_open(*args, **kwargs)
+    File: ./charms/charm-nova-cloud-controller/unit_tests/test_nova_cc_contexts.py
+           91: self.assertEqual({'memcached_servers': "%s:11211" % (formated_ip, )},
+
+Package/directory: charm-nova-compute
+    File: ./charms/charm-nova-compute/hooks/nova_compute_context.py
+           78: with open(path, 'wb') as out:
+    File: ./charms/charm-nova-compute/hooks/nova_compute_utils.py
+          409: open(ceph_config_file(), 'w').close()
+          508: with open(os.path.join(home, '.ssh', 'id_rsa.pub')) as key:
+          532: with open(pub_key, 'wb') as out:
+          575: for index in range(0, int(known_hosts_index)):
+          581: for index in range(0, int(authorized_keys_index)):
+          588: for index in range(0, int(known_hosts_index)):
+          593: for index in range(0, int(authorized_keys_index)):
+          608: with open(dest_known_hosts, 'wb') as _hosts:
+          609: for index in range(0, int(known_hosts_index)):
+          611: with open(dest_auth_keys, 'wb') as _keys:
+          612: for index in range(0, int(authorized_keys_index)):
+          651: with open(CA_CERT_PATH, 'wb') as out:
+          928: hugepage_multiplier = float(hugepage_config_pct) / 100
+          929: hugepages = int((mem.total * hugepage_multiplier) / hugepage_size)
+    File: ./charms/charm-nova-compute/unit_tests/test_nova_compute_utils.py
+          479: with patch_open() as (_open, _file):
+          486: with patch_open() as (_open, _file):
+          519: with patch_open() as (_open, _file):
+          556: with patch_open() as (_open, _file):
+          564: with patch_open() as (_open, _file):
+    File: ./charms/charm-nova-compute/unit_tests/test_utils.py
+           46: return yaml.safe_load(open(config).read())['options']
+          124: def patch_open():
+          125: '''Patch open() to allow mocking both open() itself and the file that is
+          133: def stub_open(*args, **kwargs):
+          134: mock_open(*args, **kwargs)
+    File: ./charms/charm-nova-compute/unit_tests/test_nova_compute_contexts.py
+           55: print '[juju test log (%s)] %s' % (level, msg)
+
+Package/directory: charm-nova-compute-proxy
+    File: ./charms/charm-nova-compute-proxy/bin/charm_helpers_sync.py
+           41: return yaml.load(open(conf_file).read())
+           80: open(_i, 'wb').close()
+          249: logging.error("Could not sync: %s" % e)
+    File: ./charms/charm-nova-compute-proxy/tests/basic_deployment.py
+          139: with open('files/id_rsa_tmp', 'r') as key_file:
+    File: ./charms/charm-nova-compute-proxy/hooks/nova_compute_proxy.py
+           79: class REMOTEProxy():
+          128: with open(filename, 'w') as f:
+          149: "%s%s" % (CHARM_SCRATCH_DIR, target),
+          176: if os.path.exists("%s%s" % (CHARM_SCRATCH_DIR, f)):
+    File: ./charms/charm-nova-compute-proxy/unit_tests/test_utils.py
+           46: return yaml.safe_load(open(config).read())['options']
+          124: def patch_open():
+          125: '''Patch open() to allow mocking both open() itself and the file that is
+          133: def stub_open(*args, **kwargs):
+          134: mock_open(*args, **kwargs)
+
+Package/directory: charm-odl-controller
+    File: ./charms/charm-odl-controller/unit_tests/test_utils.py
+           46: return yaml.safe_load(open(config).read())['options']
+          124: def patch_open():
+          125: '''Patch open() to allow mocking both open() itself and the file that is
+          133: def stub_open(*args, **kwargs):
+          134: mock_open(*args, **kwargs)
+    File: ./charms/charm-odl-controller/unit_tests/odl_outputs.py
+          228: gemini-blueprint                      | 1.0.0.RELEASE       |           | spring-3.0.1                             | Gemini Blueprint Extender
+
+Package/directory: charm-openstack-dashboard
+    File: ./charms/charm-openstack-dashboard/tests/basic_deployment.py
+          158: msg = "Mismatch %s != %s" % (expected[key], value)
+          232: response = urllib2.urlopen('http://%s/horizon' % (dashboard_ip))
+          254: urllib2.urlopen('http://%s/server-status' % (dashboard_ip))
+    File: ./charms/charm-openstack-dashboard/templates/newton/local_settings.py
+          202: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v3" % OPENSTACK_HOST
+          207: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v2.0" % OPENSTACK_HOST
+          856: # the client side. Some settings are required by in-tree / built-in horizon
+    File: ./charms/charm-openstack-dashboard/templates/liberty/local_settings.py
+          162: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v2.0" % OPENSTACK_HOST
+          735: # the client side. Some settings are required by in-tree / built-in horizon
+    File: ./charms/charm-openstack-dashboard/templates/icehouse/local_settings.py
+          140: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v2.0" % OPENSTACK_HOST
+    File: ./charms/charm-openstack-dashboard/templates/ocata/local_settings.py
+          202: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v3" % OPENSTACK_HOST
+          207: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v2.0" % OPENSTACK_HOST
+          855: # the client side. Some settings are required by in-tree / built-in horizon
+    File: ./charms/charm-openstack-dashboard/templates/mitaka/local_settings.py
+          202: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v3" % OPENSTACK_HOST
+          207: OPENSTACK_KEYSTONE_URL = "{{ service_protocol }}://%s:{{ service_port }}/v2.0" % OPENSTACK_HOST
+          815: # the client side. Some settings are required by in-tree / built-in horizon
+    File: ./charms/charm-openstack-dashboard/actions/actions.py
+           53: return "Action %s undefined" % action_name
+    File: ./charms/charm-openstack-dashboard/hooks/horizon_contexts.py
+           81: with open('/etc/default/haproxy', 'w') as out:
+          241: with open('/etc/ssl/certs/dashboard.cert', 'w') as cert_out:
+          243: with open('/etc/ssl/private/dashboard.key', 'w') as key_out:
+    File: ./charms/charm-openstack-dashboard/hooks/horizon_utils.py
+          115: APACHE_CONF = "%s/conf.d/openstack-dashboard.conf" % (APACHE_CONF_DIR)
+          118: PORTS_CONF = "%s/ports.conf" % (APACHE_CONF_DIR)
+          119: APACHE_24_SSL = "%s/sites-available/default-ssl.conf" % (APACHE_CONF_DIR)
+          120: APACHE_24_DEFAULT = "%s/sites-available/000-default.conf" % (APACHE_CONF_DIR)
+          121: APACHE_SSL = "%s/sites-available/default-ssl" % (APACHE_CONF_DIR)
+          122: APACHE_DEFAULT = "%s/sites-available/default" % (APACHE_CONF_DIR)
+    File: ./charms/charm-openstack-dashboard/hooks/horizon_hooks.py
+          241: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-openstack-dashboard/unit_tests/test_utils.py
+           42: return yaml.safe_load(open(config).read())['options']
+    File: ./charms/charm-openstack-dashboard/unit_tests/test_horizon_contexts.py
+           39: def patch_open():
+           40: '''Patch open() to allow mocking both open() itself and the file that is
+           48: def stub_open(*args, **kwargs):
+           49: mock_open(*args, **kwargs)
+           99: with patch_open() as (_open, _file):
+          536: with patch_open() as (_open, _file):
+          553: with patch_open() as (_open, _file):
+
+Package/directory: charm-openvswitch-odl
+
+Package/directory: charm-percona-cluster
+    File: ./charms/charm-percona-cluster/tests/basic_deployment.py
+           38: with open('local.yaml', 'rb') as f:
+          137: m for m in range(self.units)]
+          161: " (wanted=%s, got=%s)" % (self.units, got))
+          180: assert output == leader_uuid, "%s != %s" % (output,
+          196: # Note that is_mysqld_running will print an error message when
+          241: assert self.is_port_open(address=self.vip), 'cannot connect to vip'
+          304: self.log.debug("command returned non-zero '%s'" % (code))
+          319: self.log.debug("command returned non-zero '%s'" % (code))
+          323: self.log.info("%s = %s" % (attr, value))
+          333: def is_port_open(self, unit=None, port='3306', address=None):
+          346: self.log.error("could not connect to %s:%s" % (addr, port))
+          349: " to %s:%s" % (addr,
+    File: ./charms/charm-percona-cluster/hooks/percona_utils.py
+           95: "Leader UUID ('%s') != Unit UUID ('%s')" % (leader_uuid,
+          105: """This class is to provide to register_configs() as a 'fake'
+          138: with open(SEEDED_MARKER.format(data_dir=resolve_data_dir()),
+          145: with open('/etc/apt/sources.list.d/percona.list', 'w') as sources:
+          200: "(expected=%s, got=%s)" % (min_size, units), level=INFO)
+          239: "for addr %s" % (unit, hostname, cluster_address),
+          278: dconf = Popen(['debconf-set-selections'], stdin=PIPE)
+          313: with open(HOSTS_FILE, 'r') as hosts:
+          316: log("Updating %s with: %s (current: %s)" % (HOSTS_FILE, map, lines),
+          330: log("Marking line '%s' for update or removal" % (line.strip()),
+          334: newlines.append("%s %s\n" % (ip, hostname))
+          339: with open(tmpfile.name, 'w') as hosts:
+          373: log("'%s' already exists, skipping" % dest_file, level='INFO')
+          387: cursor.execute("show status like '%s'" % (key))
+          418: log("Found inconsistent bootstrap uuids - %s" % (uuids), WARNING)
+          490: log("wsrep_ready: '%s'" % wsrep_ready, DEBUG)
+          497: log("UUID is empty: '%s'" % cluster_state_uuid, level=DEBUG)
+          677: "mysql data dir" % (binlogs_directory))
+          854: log("Error connecting using new passowrd: %s" % str(ex), level=DEBUG)
+    File: ./charms/charm-percona-cluster/hooks/percona_hooks.py
+          243: log("Failed to start mysql - retrying in %ss" % (delay),
+          324: log("Leader unit - bootstrap required=%s" % (not bootstrapped),
+          367: log("Setting cluster relation: '%s'" % (relation_settings),
+          501: log("Multiple hostnames provided by relation: %s" % (', '.join(hosts)),
+          504: log("Single hostname provided by relation: %s" % (hosts),
+          551: singleset = set(['database', 'username', 'hostname'])
+    File: ./charms/charm-percona-cluster/unit_tests/test_percona_hooks.py
+          425: "%s is not file" % seeded_file)
+          426: with open(seeded_file) as f:
+    File: ./charms/charm-percona-cluster/unit_tests/test_utils.py
+           30: return yaml.safe_load(open(config).read())['options']
+          125: def patch_open():
+          126: '''Patch open() to allow mocking both open() itself and the file that is
+          134: def stub_open(*args, **kwargs):
+          135: mock_open(*args, **kwargs)
+    File: ./charms/charm-percona-cluster/unit_tests/test_percona_utils.py
+           28: with open(tmpfile.name, 'r') as fd:
+           33: self.assertEqual(lines[0], "%s %s\n" % (map.items()[0]))
+           41: with open(tmpfile.name, 'w') as fd:
+           42: fd.write("%s %s\n" % (map.items()[0]))
+           46: with open(tmpfile.name, 'r') as fd:
+           51: self.assertEqual(lines[0], "%s %s\n" % (map.items()[0]))
+           63: with open(tmpfile.name, 'w') as fd:
+           65: fd.write("%s %s\n" % (altmap.items()[0]))
+           69: with open(percona_utils.HOSTS_FILE, 'r') as fd:
+           75: self.assertEqual(lines[1], "%s %s\n" % (map.items()[0]))
+           76: self.assertEqual(lines[4], "%s %s\n" % (map.items()[3]))
+
+Package/directory: charm-plumgrid-director
+    File: ./charms/charm-plumgrid-director/bin/charm_helpers_sync.py
+           41: return yaml.load(open(conf_file).read())
+           80: open(_i, 'wb').close()
+          249: logging.error("Could not sync: %s" % e)
+    File: ./charms/charm-plumgrid-director/actions/actions.py
+           56: return "Action %s undefined" % action_name
+    File: ./charms/charm-plumgrid-director/hooks/pg_dir_utils.py
+          110: with open(SOURCES_LIST, 'r+') as sources:
+          253: stdout=open(os.devnull, 'w'),
+          287: with open(PG_IFCS_CONF, 'r') as ifcs:
+          366: fr = open(AUTH_KEY_PATH, 'r')
+          375: fa = open(AUTH_KEY_PATH, file_write_type)
+          509: 'dpkg -l | grep plumgrid | awk \'{print $3}\' | '
+          517: _exec_cmd_output('lsb_release -r | awk \'{print $2}\'',
+          533: + ' | grep -i appversion | awk \'{print $2}\''
+    File: ./charms/charm-plumgrid-director/unit_tests/test_utils.py
+           29: return yaml.safe_load(open(config).read())['options']
+          107: def patch_open():
+          108: '''Patch open() to allow mocking both open() itself and the file that is
+          116: def stub_open(*args, **kwargs):
+          117: mock_open(*args, **kwargs)
+    File: ./charms/charm-plumgrid-director/unit_tests/test_pg_dir_utils.py
+           21: class DummyContext():
+           41: class _mock_OSConfigRenderer():
+
+Package/directory: charm-plumgrid-edge
+    File: ./charms/charm-plumgrid-edge/bin/charm_helpers_sync.py
+           41: return yaml.load(open(conf_file).read())
+           80: open(_i, 'wb').close()
+          249: logging.error("Could not sync: %s" % e)
+    File: ./charms/charm-plumgrid-edge/actions/actions.py
+           56: return "Action %s undefined" % action_name
+    File: ./charms/charm-plumgrid-edge/hooks/pg_dir_utils.py
+          110: with open(SOURCES_LIST, 'r+') as sources:
+          253: stdout=open(os.devnull, 'w'),
+          287: with open(PG_IFCS_CONF, 'r') as ifcs:
+          366: fr = open(AUTH_KEY_PATH, 'r')
+          375: fa = open(AUTH_KEY_PATH, file_write_type)
+          509: 'dpkg -l | grep plumgrid | awk \'{print $3}\' | '
+          517: _exec_cmd_output('lsb_release -r | awk \'{print $2}\'',
+          533: + ' | grep -i appversion | awk \'{print $2}\''
+    File: ./charms/charm-plumgrid-edge/unit_tests/test_utils.py
+           29: return yaml.safe_load(open(config).read())['options']
+          107: def patch_open():
+          108: '''Patch open() to allow mocking both open() itself and the file that is
+          116: def stub_open(*args, **kwargs):
+          117: mock_open(*args, **kwargs)
+    File: ./charms/charm-plumgrid-edge/unit_tests/test_pg_dir_utils.py
+           21: class DummyContext():
+           41: class _mock_OSConfigRenderer():
+
+Package/directory: charm-plumgrid-gateway
+    File: ./charms/charm-plumgrid-gateway/bin/charm_helpers_sync.py
+           41: return yaml.load(open(conf_file).read())
+           80: open(_i, 'wb').close()
+          249: logging.error("Could not sync: %s" % e)
+    File: ./charms/charm-plumgrid-gateway/hooks/pg_gw_utils.py
+           87: with open(SOURCES_LIST, 'r+') as sources:
+          242: stdout=open(os.devnull, 'w'),
+          276: with open(PG_IFCS_CONF, 'r') as ifcs:
+          378: fr = open(AUTH_KEY_PATH, 'r')
+          387: fa = open(AUTH_KEY_PATH, file_write_type)
+    File: ./charms/charm-plumgrid-gateway/unit_tests/test_utils.py
+           29: return yaml.safe_load(open(config).read())['options']
+          107: def patch_open():
+          108: '''Patch open() to allow mocking both open() itself and the file that is
+          116: def stub_open(*args, **kwargs):
+          117: mock_open(*args, **kwargs)
+    File: ./charms/charm-plumgrid-gateway/unit_tests/test_pg_gw_utils.py
+           21: class DummyContext():
+           41: class _mock_OSConfigRenderer():
+
+Package/directory: charm-rabbitmq-server
+    File: ./charms/charm-rabbitmq-server/tests/basic_deployment.py
+          163: print("Running command: %s\n" % " ".join(command))
+          532: while ret and tries < (max_wait / 30):
+          555: while ret and tries < (max_wait / 30):
+    File: ./charms/charm-rabbitmq-server/scripts/check_rabbitmq_queues.py
+           14: with open(filename, "rb") as fin:
+           25: print "ERROR: problem parsing the stats file"
+           27: assert m_all.isdigit(), "Message count is not a number: %r" % m_all
+           86: "%s in %s has %s messages" % (queue, vhost, message_no))
+           89: "%s in %s has %s messages" % (queue, vhost, message_no))
+           91: print "CRITICALS: %s" % ", ".join(criticals)
+           95: print "WARNINGS: %s" % ", ".join(warnings)
+           98: print "OK"
+    File: ./charms/charm-rabbitmq-server/scripts/check_rabbitmq.py
+           28: print "CRITICAL: amqplib not found"
+           37: print "TIMEOUT waiting for all queued messages to be delivered"
+           44: print "Connection to %s requested" % host_port
+           50: print "ERROR: Could not connect to RabbitMQ server %s:%d" % (
+           53: print e
+           57: print "ERROR: Unknown error connecting to RabbitMQ server %s:%d" % (
+           86: print "Created new exchange %s (%s)" % (
+           90: print "Exchange %s (%s) is already declared" % (
+          103: self.name = "%s_queue" % exname
+          108: print self.name, "setup"
+          124: consumer_tag = "callback_%s" % self.name
+          130: print "Client %s saw this message: '%s'" % (self.name, msg.body)
+          151: message = "This is test message %d" % counter
+          155: print "Sent message: %s" % message
+          167: for i in range(options.messages):
+          179: sys.stdout = os.fdopen(os.dup(1), "w", 0)
+          180: host_port = "%s:%s" % (host, port)
+          185: print "Created %s exchange of type %s" % (exname, extype)
+          188: print "Reusing existing exchange %s of type %s" % (exname, extype)
+          228: print """
+          230: """ % (options.host, options.port, options.exchange, options.type)
+          234: print "Ok: sent and received %d test messages" % options.messages
+          236: print "ERROR: Could not send/receive test messages"
+    File: ./charms/charm-rabbitmq-server/hooks/rabbitmq_server_relations.py
+          227: singleset = set(['username', 'vhost'])
+          349: cookie = open(rabbit.COOKIE_PATH, 'r').read().strip()
+          426: with open(rabbit.COOKIE_PATH, 'r') as f:
+          434: with open(rabbit.COOKIE_PATH, 'wb') as out:
+    File: ./charms/charm-rabbitmq-server/hooks/rabbitmq_context.py
+          100: with open(path, 'w') as fh:
+          242: for line in open(ENV_CONF).readlines():
+    File: ./charms/charm-rabbitmq-server/hooks/rabbit_utils.py
+          167: log("writing config file: %s , data: %s" % (config_path,
+          301: log("Setting HA policy to vhost '%s'" % vhost, level='INFO')
+          316: log("Clearing '%s' policy from vhost '%s'" % (name, vhost), level='INFO')
+          586: p = subprocess.Popen(cmd.split(" "),
+          595: print l.strip('\n')
+          609: log("command %s return non-zero." % cmd, level=ERROR)
+          623: with open(_passwd_file, 'r') as passwd:
+          640: with open(f, 'r') as passwd:
+          675: with open(HOSTS_FILE, 'r') as hosts:
+          678: log("Updating hosts file with: %s (current: %s)" % (map, lines),
+          692: log("Removing line '%s' from hosts file" % (line))
+          695: newlines.append("%s %s\n" % (ip, hostname))
+          700: with open(tmpfile.name, 'w') as hosts:
+         1015: "(expected=%s, got=%s)" % (min_size, units), level=INFO)
+    File: ./charms/charm-rabbitmq-server/unit_tests/test_rabbit_utils.py
+          122: with open(tmpfile.name, 'r') as fd:
+          127: self.assertEqual(lines[0], "%s %s\n" % (map.items()[0]))
+          135: with open(tmpfile.name, 'w') as fd:
+          136: fd.write("%s %s\n" % (map.items()[0]))
+          140: with open(tmpfile.name, 'r') as fd:
+          145: self.assertEqual(lines[0], "%s %s\n" % (map.items()[0]))
+          157: with open(tmpfile.name, 'w') as fd:
+          159: fd.write("%s %s\n" % (altmap.items()[0]))
+          163: with open(rabbit_utils.HOSTS_FILE, 'r') as fd:
+          169: self.assertEqual(lines[1], "%s %s\n" % (map.items()[0]))
+          170: self.assertEqual(lines[4], "%s %s\n" % (map.items()[3]))
+          174: print "test_not_clustered"
+    File: ./charms/charm-rabbitmq-server/unit_tests/test_utils.py
+           46: return yaml.safe_load(open(config).read())['options']
+          138: def patch_open():
+          139: '''Patch open() to allow mocking both open() itself and the file that is
+          147: def stub_open(*args, **kwargs):
+          148: mock_open(*args, **kwargs)
+    File: ./charms/charm-rabbitmq-server/unit_tests/test_rabbitmq_context.py
+           68: m = mock.mock_open()
+          180: with open(tmpfile.name, 'w') as fd:
+
+Package/directory: charm-swift-proxy
+    File: ./charms/charm-swift-proxy/tests/basic_deployment.py
+          593: for i in range(retry_count, -1, -1):
+          607: u.log.info("sleeping %d seconds..." % i)
+    File: ./charms/charm-swift-proxy/actions/actions.py
+           37: with open(actions_yaml_path) as fh:
+           89: return "Action %s undefined" % action_name
+    File: ./charms/charm-swift-proxy/lib/swift_utils.py
+          281: rq['broker-timestamp'] = "%f" % time.time()
+          370: log("Responses not all equal for key '%s'" % (key), level=DEBUG)
+          463: builder = pickle.load(open(path, 'rb'))
+          470: builder.copy_from(pickle.load(open(path, 'rb')))
+          480: with open(ring_path, "wb") as fd:
+          557: if len(set([total for total in zone_distrib.itervalues()])) == 1:
+          571: p = subprocess.Popen(cmd)
+          575: msg = ("Failed to set min_part_hours=%s on %s" % (value, path))
+          612: p = subprocess.Popen(cmd)
+          705: builder = "%s.builder" % (server)
+          761: deleted = "%s.deleted" % (www_dir)
+          776: with open(path, 'rb') as fd:
+          789: with open(builder, 'rb') as fd:
+          946: os.rename(path, "%s.deleted" % (path))
+          975: log("Notifying peer(s) that %s are ready for sync." % type, level=INFO)
+          979: log("Notifying rid=%s (%s)" % (rid, rq), level=DEBUG)
+         1082: log("Not yet synced: %s" % ', '.join(not_synced), level=INFO)
+         1134: "(need >= %d)" % (num_zones, replicas), level=INFO)
+    File: ./charms/charm-swift-proxy/lib/swift_context.py
+          214: with open(SWIFT_HASH_FILE, 'r') as hashfile:
+          218: with open(SWIFT_HASH_FILE, 'w') as hashfile:
+          225: with open(SWIFT_HASH_FILE, 'w') as hashfile:
+    File: ./charms/charm-swift-proxy/hooks/swift_hooks.py
+          253: "(got=%s)" % (addr))
+          273: log("Broadcasting acl '%s' to all storage units" % (rsync_hosts),
+          316: "relation (missing=%s)" % (', '.join(missing)), level=INFO)
+          406: log("Cluster changed by unit=%s (local is leader)" % (remote_unit()),
+          434: log("Unit '%s' has requested a resync" % (remote_unit()),
+          458: "'%s'" % (key))
+          463: log("Syncing rings and builders (peers-only=%s)" % (peers_only),
+          471: "ready (current='%s', token='%s')" % (acks, tx_ack_token),
+          487: "unable to attempt leader restore" % (remote_unit()))
+          500: log("Cluster changed by unit=%s (local is non-leader)" % (remote_unit()),
+          541: log("Broker and ACK tokens match (%s)" % (broker_token),
+          644: "vip group - skipping" % (vip_key, vip), WARNING)
+    File: ./charms/charm-swift-proxy/unit_tests/test_swift_context.py
+          128: with open(tmpfile, 'r') as fd:
+          150: with open(tmpfile, 'r') as fd:
+    File: ./charms/charm-swift-proxy/unit_tests/test_templates.py
+           65: with open(template.filename, 'r') as template_orig:
+    File: ./charms/charm-swift-proxy/unit_tests/test_swift_utils.py
+           30: path = os.path.join(tmpdir, "%s.builder" % ring)
+           32: with open(path, 'w') as fd:
+          193: with open(ring, 'w') as fd:
+          196: with open(builder, 'w') as fd:
+
+Package/directory: charm-swift-storage
+    File: ./charms/charm-swift-storage/actions/actions.py
+           53: with open(actions_yaml_path) as fh:
+          104: return "Action %s undefined" % action_name
+    File: ./charms/charm-swift-storage/lib/swift_storage_utils.py
+          223: with open('/proc/partitions') as proc:
+          308: log("Device '%s' does not appear to be in use by Swift" % (dev),
+          318: blk_uuid = get_device_blkid("/dev/%s" % (dev))
+          321: masterkey = "%s@%s" % (dev, env_uuid)
+          326: "devstore)" % (dev), level=INFO)
+          347: "local devstore only)" % (dev), level=INFO)
+          357: "will be added to the cache" % (dev), level=INFO)
+          362: "devstore and proxy relation)" % (dev), level=INFO)
+          403: blk_uuid = get_device_blkid("/dev/%s" % (dev))
+          404: key = "%s@%s" % (dev, env_uuid)
+          448: log("Device '%s' already in the ring - ignoring" % (dev))
+          542: with open(os.path.join(rsyncd_dir, filename), 'r') as fragment:
+          544: with open('/etc/rsyncd.conf', 'w') as f:
+          567: f = open('/etc/rsyncd.conf', 'w')
+    File: ./charms/charm-swift-storage/lib/swift_storage_context.py
+           46: with open('/etc/default/rsync') as _in:
+           50: with open('/etc/default/rsync', 'a+') as out:
+           53: with open('/etc/default/rsync', 'w') as out:
+    File: ./charms/charm-swift-storage/files/nrpe-external-master/check_swift_storage.py
+           21: with open(filename, 'rb') as f:
+           37: data = urllib2.urlopen(url).read()
+           99: data = urllib2.urlopen(url).read()
+    File: ./charms/charm-swift-storage/unit_tests/test_check_swift_storage.py
+           66: with patch("__builtin__.open", mock_open(read_data='data')) as \
+    File: ./charms/charm-swift-storage/unit_tests/test_swift_storage_relations.py
+           95: with patch_open() as (_open, _file):
+          105: with patch_open() as (_open, _file):
+          115: with patch_open() as (_open, _file):
+          124: with patch_open() as (_open, _file):
+          136: with patch_open() as (_open, _file):
+          201: devices = {"vdb@%s" % (test_uuid):
+          247: devices = {"vdb@%s" % (test_uuid): {"status": "active",
+          249: "vdd@%s" % (test_uuid): {"status": "active",
+          251: "vdc@%s" % (test_uuid): {"status": "active",
+          292: devices = {"vdb@%s" % (test_uuid): {"status": "active",
+          294: "vdd@%s" % (test_uuid): {"status": "active",
+          296: "vdc@%s" % (test_uuid): {"status": "active",
+    File: ./charms/charm-swift-storage/unit_tests/test_utils.py
+           43: return yaml.safe_load(open(config).read())['options']
+          121: def patch_open():
+          122: '''Patch open() to allow mocking both open() itself and the file that is
+          130: def stub_open(*args, **kwargs):
+          131: mock_open(*args, **kwargs)
+    File: ./charms/charm-swift-storage/unit_tests/test_swift_storage_utils.py
+          310: with patch_open() as (_open, _file):
+          322: with patch_open() as (_open, _file):
+    File: ./charms/charm-swift-storage/unit_tests/test_swift_storage_context.py
+           74: with patch_open() as (_open, _file):
+
+Package/directory: charm-tempest
+    File: ./charms/charm-tempest/src/lib/charm/openstack/tempest.py
+          445: f = open(logfile, "w")
+          465: with open(logfile, 'r') as tempest_log:
+
+Package/directory: charm-trove
+    File: ./charms/charm-trove/src/tests/basic_deployment.py
+          131: print("Running command: %s\n" % " ".join(command))
