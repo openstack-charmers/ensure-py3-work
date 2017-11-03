@@ -72,3 +72,4 @@ git://github.com/openstack/charm-manila-glusterfs.git
 git://github.com/openstack/charm-gnocchi.git
 git://github.com/openstack/charm-interface-ceph-client.git
 git://github.com/openstack/charm-interface-gnocchi.git
+git://github.com/openstack/charms.ceph.git

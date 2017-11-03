@@ -29,6 +29,7 @@ _SINGLE_EQUALS = "(?:\s+\=\s+)"
 PATTERNS = (
     # _CORE_PATTERN.format('|'.join(openstack_versions)),
     # _CORE_PATTERN.format('|'.join(ubuntu_releases)),
+    "\#\!/usr/bin/python",
     "open\(.*\)",  # check that we are decoding the output to UTF-8
     "sorted\(.*cmp\=.*\)",  # cmp no longer supported, maybe use 'key'
     "\.sort\(.*cmp\=.*\)",  # cmp no longer suppored, maybe use 'key'
@@ -41,8 +42,10 @@ PATTERNS = (
     "\ range\(.+\)",  # range might need to be xrange()
     "\.next\(\)",  # x.next() -> next(x)
     "class\ .*\(\)",  # old style classes might need to be object
-    "\.iter[keys|items|values]\(\)",  # need changing to keys, etc.
-    "\.[keys|items|values]\(\)",  # just need checking
+    "\.iter(?:keys|items|values)\(\)",  # need changing to keys, etc.
+    "\.(?:keys|items|values)\(\)",  # just need checking
+    "json\.loads\(",  # in case it's the output of a check_output() call
+    "check_output\(",  # all checkout calls have to be looked at
 )
 REJECT_PATTERNS = (
     # "{}{}".format(_SINGLE_EQUALS, PATTERNS[0]),
@@ -53,14 +56,30 @@ print(PATTERNS)
 
 
 def walk_py_files(directory, avoid_charmhelpers=True):
+    avoid_in_root = ('.tox', '.git', '.stestr', '.testrepository', 'build',
+                     'layers', 'interfaces', '.gitignore', )
     for root, dirs, files in os.walk(directory):
         if avoid_charmhelpers and 'charmhelpers' in root:
+            # continue
+            avoid_in_root = avoid_in_root + ('charmhelpers', )
+        found = False
+        for f in avoid_in_root:
+            if f in root:
+                found = True
+        if found:
             continue
+        # print("acceptable root:", root)
         if ".tox" in root:
             continue
         for f in files:
+            p = os.path.join(root, f)
             if f.endswith(".py"):
-                yield os.path.join(root, f)
+                yield os.path.join(p)
+            if os.path.isfile(p) and os.path.getsize(p) > 0:
+                with open(p, "r") as fh:
+                    b = fh.read(1)
+                    if b == '#':
+                        yield os.path.join(p)
 
 
 def scan_for_patterns(f):
