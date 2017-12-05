@@ -46,6 +46,8 @@ PATTERNS = (
     "\.(?:keys|items|values)\(\)",  # just need checking
     "json\.loads\(",  # in case it's the output of a check_output() call
     "check_output\(",  # all checkout calls have to be looked at
+    "\.message",  # this is looking for "e.message" for exceptions; just need
+                  # checking.
 )
 REJECT_PATTERNS = (
     # "{}{}".format(_SINGLE_EQUALS, PATTERNS[0]),
