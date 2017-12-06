@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Copyright 2017 Canonical Group Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -48,6 +49,8 @@ PATTERNS = (
     "check_output\(",  # all checkout calls have to be looked at
     "\.message",  # this is looking for "e.message" for exceptions; just need
                   # checking.
+    "= \{\}",  # look for empty dictionary assignements.  Do they need to go
+               # to collections.OrderedDict()
 )
 REJECT_PATTERNS = (
     # "{}{}".format(_SINGLE_EQUALS, PATTERNS[0]),
@@ -77,11 +80,15 @@ def walk_py_files(directory, avoid_charmhelpers=True):
             p = os.path.join(root, f)
             if f.endswith(".py"):
                 yield os.path.join(p)
-            if os.path.isfile(p) and os.path.getsize(p) > 0:
+            if (os.path.isfile(p) and not os.path.islink(p) and
+                    os.path.getsize(p) > 0):
                 with open(p, "r") as fh:
-                    b = fh.read(1)
-                    if b == '#':
-                        yield os.path.join(p)
+                    try:
+                        b = fh.read(1)
+                        if b == '#':
+                            yield os.path.join(p)
+                    except UnicodeDecodeError:
+                        pass
 
 
 def scan_for_patterns(f):
@@ -99,10 +106,20 @@ def scan_for_patterns(f):
 
 
 def main(args):
+    if len(args) != 2:
+        print("Must pass either --all or charm/directory name to check")
+        exit(1)
     found = collections.OrderedDict()
-    top_level_dirs = sorted(os.walk(ALL_DIR).next()[1])
-    print("Checking ...")
+    if args[1] == '--all':
+        top_level_dirs = sorted(next(os.walk(ALL_DIR))[1])
+    else:
+        charm_path = "charm-{}".format(args[1])
+        if not os.path.isdir(os.path.join(ALL_DIR, charm_path)):
+            print("'{}' is not a dir we can search".format(charm_path))
+            exit(1)
+        top_level_dirs =[charm_path]
     for d in top_level_dirs:
+        print("Checking '{}'...".format(d))
         check_dir = os.path.join(ALL_DIR, d)
         found[d] = collections.OrderedDict()
         for f in walk_py_files(
