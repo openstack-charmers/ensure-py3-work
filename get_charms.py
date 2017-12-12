@@ -33,21 +33,17 @@ def clone_repos(file, branch):
             charm_name = charm_name[6:]
         charm_dir = CHARM_PREFIX + charm_name
         if os.path.exists(charm_dir):
-            # cmd = "rm -rf {}".format(charm_dir)
-            # subprocess.check_call(cmd.split(' '))
             cmd = ("cd {charm} && "
-                   "get fetch origin && "
+                   "git fetch origin && "
                    "git checkout {branch} && "
                    "git merge --ff-only origin/{branch}"
                    .format(charm=charm_dir, branch=branch))
-            print(cmd)
-            subprocess.check_call(cmd.split(' '), shell=True)
+            subprocess.check_call(cmd, shell=True)
         else:
             cmd = "git clone {} {}".format(repo.rstrip('\n'), charm_dir)
             subprocess.check_call(cmd.split(' '))
             cmd = "cd {} && git checkout {}".format(charm_dir, branch)
-            print(cmd)
-            subprocess.check_call(cmd.split(' '), shell=True)
+            subprocess.check_call(cmd, shell=True)
 
 
 def main(argv):
