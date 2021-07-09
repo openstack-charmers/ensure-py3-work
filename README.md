@@ -1,5 +1,7 @@
 # ensure-py3-work
 
+**Note: this is now archived as it's no longer needed and is only being kept for historical reference.
+
 This is a collection of utilities and, during the project, the status of
 the ongoing work to migrate the non-reactive charms from Python 2 to
 Python 3.
